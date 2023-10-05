@@ -1,0 +1,14 @@
+C:\Users\kemol\RiderProjects\infa\infa\bin\Debug\net7.0\infa.exe
+C:\Users\kemol\RiderProjects\infa\infa\bin\Debug\net7.0\infa.deps.json
+C:\Users\kemol\RiderProjects\infa\infa\bin\Debug\net7.0\infa.runtimeconfig.json
+C:\Users\kemol\RiderProjects\infa\infa\bin\Debug\net7.0\infa.dll
+C:\Users\kemol\RiderProjects\infa\infa\bin\Debug\net7.0\infa.pdb
+C:\Users\kemol\RiderProjects\infa\infa\obj\Debug\net7.0\infa.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kemol\RiderProjects\infa\infa\obj\Debug\net7.0\infa.AssemblyInfoInputs.cache
+C:\Users\kemol\RiderProjects\infa\infa\obj\Debug\net7.0\infa.AssemblyInfo.cs
+C:\Users\kemol\RiderProjects\infa\infa\obj\Debug\net7.0\infa.csproj.CoreCompileInputs.cache
+C:\Users\kemol\RiderProjects\infa\infa\obj\Debug\net7.0\infa.dll
+C:\Users\kemol\RiderProjects\infa\infa\obj\Debug\net7.0\refint\infa.dll
+C:\Users\kemol\RiderProjects\infa\infa\obj\Debug\net7.0\infa.pdb
+C:\Users\kemol\RiderProjects\infa\infa\obj\Debug\net7.0\infa.genruntimeconfig.cache
+C:\Users\kemol\RiderProjects\infa\infa\obj\Debug\net7.0\ref\infa.dll
