@@ -1,0 +1,23 @@
+Console.WriteLine(Task5());
+Console.WriteLine(Math.PI);
+static double Task5(double eps = 0.00001)
+{
+    double check = Math.PI;
+    double res = 0;
+    double k = 1;
+    double n = 2;
+    double fact1 = 1;
+    double fact2 = 2;
+    double pow2k = 2;
+    while (Math.Abs(check - (2 * res - 2)) > eps)
+    {
+
+        res += pow2k * fact1 * fact1 / fact2;
+        k++;
+        pow2k *= 2;
+        n = n + 2;
+        fact1 *= k;
+        fact2 = fact2 * n * (n - 1);
+    }
+    return 2 * res - 2;
+}
