@@ -1,0 +1,21 @@
+double x = double.Parse(Console.ReadLine());
+double a = double.Parse(Console.ReadLine());
+double eps = 0.0000001;
+
+Console.WriteLine(Task11(x, a, eps));
+
+static double Task11(double x, double a, double eps = 0)
+{
+    double t = x, lastT = 1;
+    int c = 1;
+    double ans = 0;
+    while (Math.Abs(t - lastT) > eps)
+    {
+        ans += t;
+        lastT = t;
+        t *= (a - 1) * Math.Log(x) / c;
+        c++;
+    }
+    Console.WriteLine(c);
+    return Math.Round(ans, 8);
+}
