@@ -1,0 +1,72 @@
+Console.WriteLine(LeftRectangles(0.5, 2, 10000));
+Console.WriteLine(RightRectangles(0.5, 2, 10000));
+Console.WriteLine(Trapezoid(0.5, 2, 10000));
+Console.WriteLine(Simpson(0.5, 2, 1000000));
+Console.WriteLine(MonteCarlo(0.5, 2, 5000));
+static double F(double x)
+{
+    double formula = 1 / x + (x * x) / 4;
+    return Math.Cos(formula);
+}
+static double LeftRectangles(double left, double right, double segmentCount)
+{
+    double segmentLength = 1.5 / segmentCount;
+    double res = 0;
+    for (double i = left; i < right; i += segmentLength)
+    {
+        res += F(i);
+    }
+    return res * segmentLength;
+}
+static double RightRectangles(double left, double right, double segmentCount)
+{
+    double segmentLength = 1.5 / segmentCount;
+    double res = 0;
+    for (double i = left; i <= right - segmentLength; i += segmentLength)
+    {
+        res += F(i + segmentLength);
+    }
+    return res * segmentLength;
+}
+static double Trapezoid(double left, double right, double segmentCount)
+{
+    double segmentLength = 1.5 / segmentCount;
+    double res = 0;
+    for (double i = left; i <= right - segmentLength; i += segmentLength)
+    {
+        res += (F(i) + F(i + segmentLength)) / 2 * segmentLength;
+    }
+    return res;
+}
+
+static double Simpson(double left, double right, double segmentCount)
+{
+    double res = 0;
+    double segmentLength = 0;
+    if (segmentCount % 2 == 1) segmentCount++;
+    segmentLength = 1 / segmentCount;
+    for (double i = left; i < right; i += segmentLength)
+    {
+        res += segmentLength / 6 * (F(i) + 4 * F((2 * i + segmentLength) / 2) + F(i + segmentLength));
+    }
+    return res;
+}
+
+
+static double MonteCarlo(double left, double right, double segmentCount) 
+{
+    double segmentXLength = 1.5 / segmentCount;
+    double segmentYLength = 0.8 / segmentCount;
+    double innerCount = 0, count = 0;
+    for (double x = left; x <= right; x += segmentXLength)
+    {
+        double f = F(x);
+        for (double y = -0.4; y <= 0.4; y += segmentYLength)
+        {
+            if (y >= 0 && y <= f) innerCount++;
+            if (y <= 0 && y >= f) innerCount--;
+            count++;
+        }
+    }
+    return innerCount / count * 1.2;
+}
