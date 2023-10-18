@@ -1,0 +1,90 @@
+using System.IO.Pipes;
+
+static bool Task20(string ticket1, string ticket2)
+{
+    bool check = true;
+    string luckyTicket = "";
+    for (int i = 0; i < 6; i++)
+    {
+        luckyTicket += Convert.ToString(Convert.ToInt32((ticket1[i]) + Convert.ToInt32(ticket2[i])) % 10);
+    }
+
+    int sum1 = 0;
+    int sum2 = 0;
+    for (int i = 0; i < 3; i++)
+    {
+        sum1 += Convert.ToInt32(luckyTicket[i]);
+        sum2 += Convert.ToInt32(luckyTicket[6 - i - 1]);
+    }
+
+    return sum1 == sum2;
+}
+
+static bool Task11(int number)
+{
+    string numberBin = Convert.ToString(number, 2);
+    int finalNum = Convert.ToInt32(numberBin);
+    return finalNum % number == 0;
+}
+
+static string Task3(int circleX, int circleY, int radius, int n)
+{
+    int diff = 999999;
+    string answer = "";
+    for (int i = 0; i < n; i++)
+    {
+        var dotX = int.Parse(Console.ReadLine());
+        var dotY = int.Parse(Console.ReadLine());
+        int squareOfR = (radius * radius);
+        int equation = ((dotX - circleX) * (dotX - circleX) + (dotY - circleY) * (dotY - circleY));
+        if (equation > squareOfR)
+        {
+            if (diff > (equation - squareOfR))
+            {
+                answer = dotX.ToString() + ", " + dotY.ToString();
+                diff = equation - squareOfR;
+            }
+            else if (diff == (equation - squareOfR))
+            {
+                answer = answer + "; " + dotX.ToString() + ", " + dotY.ToString();
+            }
+        }
+    }
+    return answer;
+}
+static int Task13(int a)
+{
+    int i = Convert.ToInt32(Math.Sqrt(a));
+    int res = 0;
+    int c = 0;
+    while (res < a) {
+        res += i * i;
+        if (res > a)
+        {
+            res -= i * i;
+            i--;
+        }
+        else
+        {
+            c++;
+            Console.WriteLine($"{res}, {i}");
+        }
+    }
+    return c;
+}
+
+string ticket1 = Console.ReadLine();
+string ticket2 = Console.ReadLine();
+Console.WriteLine(Task20(ticket1, ticket2));
+
+int number = int.Parse(Console.ReadLine());
+Console.WriteLine(Task11(number));
+
+int x = int.Parse(Console.ReadLine());
+int y = int.Parse(Console.ReadLine());
+int r = int.Parse(Console.ReadLine());
+int n = int.Parse(Console.ReadLine());
+Console.WriteLine(Task3(x, y, r, n));
+
+int a = int.Parse(Console.ReadLine());
+Console.WriteLine(Task13(a));
