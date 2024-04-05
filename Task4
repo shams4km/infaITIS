@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using Task1;
+
+class Program
+{
+    static void Main()
+    {
+        EventCalendar calendar = new EventCalendar();
+
+        calendar.AddEvent(new DateTime(2005, 10, 15), "День рождения");
+        calendar.AddEvent(new DateTime(2024, 04, 05), "Встреча с друзьями");
+        calendar.AddEvent(new DateTime(2024, 04, 05), "Поход в кино");
+        calendar.AddEvent(new DateTime(2024, 10, 17), "что-нибудь");
+
+        DateTime dateToCheck1 = new DateTime(2024, 10, 15);
+        calendar.PrintEventsForDate(dateToCheck1);
+
+        DateTime dateToCheck2 = new DateTime(2024, 04, 05);
+        calendar.PrintEventsForDate(dateToCheck2);
+    }
+}
+
+class EventCalendar
+{
+    private Dictionary<DateTime, List<string>> eventsByDate = new Dictionary<DateTime, List<string>>();
+
+    public void AddEvent(DateTime date, string eventDescription)
+    {
+        if (!eventsByDate.ContainsKey(date))
+        {
+            eventsByDate[date] = new List<string>();
+        }
+        eventsByDate[date].Add(eventDescription);
+    }
+
+    public void PrintEventsForDate(DateTime date)
+    {
+        if (eventsByDate.ContainsKey(date))
+        {
+            Console.WriteLine($"События на {date.ToShortDateString()}:");
+            foreach (var eventDescription in eventsByDate[date])
+            {
+                Console.WriteLine(eventDescription);
+            }
+        }
+        else
+        {
+            Console.WriteLine($"На {date.ToShortDateString()} не произошло никаких событий.");
+        }
+    }
+}
