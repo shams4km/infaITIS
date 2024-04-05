@@ -1,0 +1,43 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[] intArray = { 1, 2, 3, 4, 5 };
+        string[] stringArray = { "apple", "banana", "cherry" };
+
+        Console.WriteLine("Исходный массив intArray:");
+        PrintArray(intArray);
+
+        int[] reversedIntArray = ReverseArray(intArray);
+        Console.WriteLine("Перевернутый массив intArray:");
+        PrintArray(reversedIntArray);
+
+        Console.WriteLine("\nИсходный массив stringArray:");
+        PrintArray(stringArray);
+
+        string[] reversedStringArray = ReverseArray(stringArray);
+        Console.WriteLine("Перевернутый массив stringArray:");
+        PrintArray(reversedStringArray);
+    }
+
+    static T[] ReverseArray<T>(T[] array)
+    {
+        T[] reversedArray = new T[array.Length];
+        for (int i = 0; i < array.Length; i++)
+        {
+            reversedArray[i] = array[array.Length - 1 - i];
+        }
+        return reversedArray;
+    }
+
+    static void PrintArray<T>(T[] array)
+    {
+        foreach (var item in array)
+        {
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+    }
+}
